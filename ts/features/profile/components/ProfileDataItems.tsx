@@ -18,13 +18,13 @@ const config: Array<ConfigItem> = [
   {
     id: "name-surname",
     title: "Nome e Cognome",
-    value: ["name", "family_name"],
+    value: ["name", "familyName"],
     iconName: "profile"
   },
   {
     id: "fiscal-code",
     title: "Codice Fiscale",
-    value: "fiscal_code",
+    value: "fiscalCode",
     iconName: "creditCard"
   },
   {

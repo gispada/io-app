@@ -25,6 +25,7 @@ import { CoBadgeActions } from "../../features/wallet/onboarding/cobadge/store/a
 import { PayPalOnboardingActions } from "../../features/wallet/onboarding/paypal/store/actions";
 import { WhatsNewActions } from "../../features/whatsnew/store/actions";
 import { ZendeskSupportActions } from "../../features/zendesk/store/actions";
+import { ProfileNewActions } from "../../features/profile/store/actions";
 import { GlobalState } from "../reducers/types";
 import { AnalyticsActions } from "./analytics";
 import { ApplicationActions } from "./application";
@@ -100,7 +101,8 @@ export type Action =
   | FastLoginActions
   | WhatsNewActions
   | PaymentsFeatureActions
-  | NewWalletActions;
+  | NewWalletActions
+  | ProfileNewActions;
 
 export type Dispatch = DispatchAPI<Action>;
 
