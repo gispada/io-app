@@ -10,7 +10,7 @@ import MessagesHomeScreen from "../features/messages/screens/MessagesHomeScreen"
 import { WalletHomeScreen as NewWalletHomeScreen } from "../features/newWallet/screens/WalletHomeScreen";
 import { PaymentsHomeScreen } from "../features/payments/home/screens/PaymentsHomeScreen";
 import I18n from "../i18n";
-import ProfileNewMainScreen from "../screens/profilenew/ProfileNewMainScreen";
+import ProfileNewMainScreen from "../features/profile/screens/ProfileNewMainScreen";
 import ServicesHomeScreen from "../screens/services/ServicesHomeScreen";
 import WalletHomeScreen from "../screens/wallet/WalletHomeScreen";
 import { useIOSelector } from "../store/hooks";
