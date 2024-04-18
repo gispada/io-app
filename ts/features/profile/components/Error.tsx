@@ -1,8 +1,7 @@
 import React from "react";
-import { H3, Pictogram, VSpacer } from "@pagopa/io-app-design-system";
+import { H3, Pictogram, VSpacer, IOStyles } from "@pagopa/io-app-design-system";
 import { View } from "react-native";
 import I18n from "../../../i18n";
-import { IOStyles } from "../../../components/core/variables/IOStyles";
 
 export const ErrorComponent = () => (
   <View style={[IOStyles.flex, IOStyles.centerJustified, IOStyles.alignCenter]}>
