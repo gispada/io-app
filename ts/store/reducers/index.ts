@@ -133,7 +133,7 @@ export const appReducer: Reducer<GlobalState, Action> = combineReducers<
   bonus: bonusReducer,
   assistanceTools: assistanceToolsReducer,
   startup: startupReducer,
-  profileNew: profileNewReducer, // TODO: fix type
+  profileNew: profileNewReducer,
   //
   // persisted state
   //

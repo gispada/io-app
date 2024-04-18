@@ -12,13 +12,22 @@ function* handleProfileData(
   action: ActionType<typeof profileData.request>
 ) {
   try {
-    const profile = yield* call(getProfile, action);
+    const response = yield* call(getProfile, action);
 
-    if (E.isLeft(profile)) {
+    if (E.isLeft(response)) {
       throw new Error("Something went wrong");
     }
 
-    yield* put(profileData.success(profile.right.value)); // TODO: fix type
+    if (response.right.status === 200) {
+      yield* put(
+        profileData.success({
+          email: response.right.value.email || "",
+          name: response.right.value.name,
+          familyName: response.right.value.family_name,
+          fiscalCode: response.right.value.fiscal_code
+        })
+      );
+    }
   } catch (error) {
     yield* put(profileData.failure(getNetworkError(error)));
   }
@@ -26,7 +35,7 @@ function* handleProfileData(
 
 export function* watchProfileSaga(
   backendClient: BackendClient,
-  bearerToken: SessionToken
+  _: SessionToken
 ): SagaIterator {
   yield* takeLatest(
     profileData.request,

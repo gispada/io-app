@@ -26,6 +26,7 @@ import { PayPalOnboardingActions } from "../../features/wallet/onboarding/paypal
 import { ServicesActions as NewServicesActions } from "../../features/services/common/store/actions";
 import { WhatsNewActions } from "../../features/whatsnew/store/actions";
 import { ZendeskSupportActions } from "../../features/zendesk/store/actions";
+import { ProfileNewActions } from "../../features/profile/store/actions";
 import { GlobalState } from "../reducers/types";
 import { AnalyticsActions } from "./analytics";
 import { ApplicationActions } from "./application";
@@ -102,7 +103,8 @@ export type Action =
   | WhatsNewActions
   | PaymentsFeatureActions
   | NewWalletActions
-  | NewServicesActions;
+  | NewServicesActions
+  | ProfileNewActions;
 
 export type Dispatch = DispatchAPI<Action>;
 

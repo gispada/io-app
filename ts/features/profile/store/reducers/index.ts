@@ -3,7 +3,8 @@ import { getType } from "typesafe-actions";
 import { identity } from "fp-ts/lib/function";
 import { createSelector } from "reselect";
 import { NetworkError } from "../../../../utils/errors";
-import { ProfileNewActions, profileData } from "../actions";
+import { profileData } from "../actions";
+import { Action } from "../../../../store/actions/types";
 import { GlobalState } from "../../../../store/reducers/types";
 import { ProfileData } from "../../types";
 
@@ -17,7 +18,7 @@ const INITIAL_STATE: ProfileState = {
 
 const reducer = (
   state: ProfileState = INITIAL_STATE,
-  action: ProfileNewActions
+  action: Action
 ): ProfileState => {
   switch (action.type) {
     case getType(profileData.request):
