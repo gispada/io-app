@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { ScrollView } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 import { List } from "native-base";
 import * as pot from "@pagopa/ts-commons/lib/pot";
+import { useIODispatch, useIOSelector } from "../../../store/hooks";
 import { IOStackNavigationRouteProps } from "../../../navigation/params/AppParamsList";
 import { MainTabParamsList } from "../../../navigation/params/MainTabParamsList";
 import ListItemComponent from "../../../components/screens/ListItemComponent";
@@ -16,8 +16,8 @@ import { config } from "./config";
 type Props = IOStackNavigationRouteProps<MainTabParamsList, "PROFILE_MAIN">;
 
 const ProfileNewMainScreen: React.FC<Props> = () => {
-  const dispatch = useDispatch();
-  const profile = useSelector(selectProfileData);
+  const dispatch = useIODispatch();
+  const profile = useIOSelector(selectProfileData);
 
   useEffect(() => {
     dispatch(profileData.request());
