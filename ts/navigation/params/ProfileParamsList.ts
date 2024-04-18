@@ -33,3 +33,8 @@ export type ProfileParamsList = {
   [ROUTES.IDPAY_CODE_PLAYGROUND]: undefined;
   [ROUTES.ITW_PLAYGROUND]: undefined;
 };
+
+export type ProfileNewParamsList = {
+  [ROUTES.PROFILE_DELETE_CONFIRM]: undefined;
+  [ROUTES.PROFILE_DELETE]: undefined;
+};

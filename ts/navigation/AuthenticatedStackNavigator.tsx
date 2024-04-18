@@ -79,6 +79,7 @@ import CheckEmailNavigator from "./CheckEmailNavigator";
 import OnboardingNavigator from "./OnboardingNavigator";
 import { AppParamsList } from "./params/AppParamsList";
 import ProfileStackNavigator from "./ProfileNavigator";
+import ProfileNewStackNavigator from "./ProfileNewNavigation";
 import ROUTES from "./routes";
 import { MainTabNavigator } from "./TabNavigator";
 import WalletNavigator from "./WalletNavigator";
@@ -158,6 +159,11 @@ const AuthenticatedStackNavigator = () => {
         name={ROUTES.PROFILE_NAVIGATOR}
         options={hideHeaderOptions}
         component={ProfileStackNavigator}
+      />
+      <Stack.Screen
+        name={ROUTES.PROFILE_NEW_NAVIGATOR}
+        options={hideHeaderOptions}
+        component={ProfileNewStackNavigator}
       />
 
       <Stack.Screen

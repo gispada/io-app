@@ -3599,8 +3599,14 @@ permissionRequest:
 newProfile:
   errors:
     fetch: Impossibile scaricare il tuo profilo :(
+    delete: Si è verificato un errore nella cancellazione del tuo profilo
   labels:
     nameSurname: Nome e Cognome
     fiscalCode: Codice Fiscale
     email: Indirizzo Email
     delete: Cancella profilo
+    cancel: Annulla
+    confirm: Conferma
+  copy:
+    confirmDelete: Vuoi cancellare il tuo profilo?
+    confirmDeleteLast: Confermi di voler cancellare i seguenti dati?
