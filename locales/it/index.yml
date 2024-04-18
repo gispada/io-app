@@ -3605,8 +3605,7 @@ newProfile:
     fiscalCode: Codice Fiscale
     email: Indirizzo Email
     delete: Cancella profilo
-    cancel: Annulla
-    confirm: Conferma
   copy:
     confirmDelete: Vuoi cancellare il tuo profilo?
     confirmDeleteLast: Confermi di voler cancellare i seguenti dati?
+    deleteSuccess: Richiesta di cancellazione profilo presa in carico

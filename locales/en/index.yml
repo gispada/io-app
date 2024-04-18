@@ -3605,8 +3605,7 @@ newProfile:
     fiscalCode: Fiscal Code
     email: Email
     delete: Delete profile
-    cancel: Cancel
-    confirm: Confirm
   copy:
     confirmDelete: Do you want to delete your profile?
     confirmDeleteLast: Are you sure you want to delete the following profile?
+    deleteSuccess: Profile deletion started

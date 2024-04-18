@@ -12,11 +12,14 @@ import { IOStackNavigationRouteProps } from "../../../navigation/params/AppParam
 import { ProfileNewParamsList } from "../../../navigation/params/ProfileParamsList";
 import { selectProfileData } from "../../../features/profile/store/reducers";
 import { ProfileDataItems } from "../components/ProfileDataItems";
+import { upsertUserDataProcessing } from "../../../store/actions/userDataProcessing";
+import { UserDataProcessingChoiceEnum } from "../../../../definitions/backend/UserDataProcessingChoice";
 import { userDataProcessingSelector } from "../../../store/reducers/userDataProcessing";
 import { InfoBox } from "../../../components/box/InfoBox";
 import { Body } from "../../../components/core/typography/Body";
-import { useIOSelector } from "../../../store/hooks";
+import { useIOSelector, useIODispatch } from "../../../store/hooks";
 import I18n from "../../../i18n";
+import { ProfileDeleteSuccess } from "../components/ProfileDeleteSuccess";
 
 type Props = IOStackNavigationRouteProps<
   ProfileNewParamsList,
@@ -26,6 +29,7 @@ type Props = IOStackNavigationRouteProps<
 const DeleteProfileScreen = ({ navigation }: Props) => {
   const profile = useIOSelector(selectProfileData);
   const userDataProcessing = useIOSelector(userDataProcessingSelector);
+  const dispatch = useIODispatch();
 
   const renderErrorIfAny = () => {
     if (pot.isError(userDataProcessing.DELETE)) {
@@ -40,6 +44,13 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
     }
     return null;
   };
+
+  if (
+    pot.isSome(userDataProcessing.DELETE) &&
+    userDataProcessing.DELETE.value?.choice
+  ) {
+    return <ProfileDeleteSuccess onDismiss={() => navigation.goBack()} />;
+  }
 
   return (
     <BaseScreenComponent
@@ -64,14 +75,20 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
         <FooterWithButtons
           type="TwoButtonsInlineThird"
           leftButton={{
-            title: I18n.t("newProfile.labels.cancel"),
+            title: I18n.t("global.buttons.cancel"),
             bordered: true,
             onPress: () => navigation.goBack()
           }}
           rightButton={{
-            title: I18n.t("newProfile.labels.confirm"),
+            title: I18n.t("global.buttons.confirm"),
             primary: true,
-            isLoading: pot.isLoading(userDataProcessing.DELETE)
+            isLoading: pot.isLoading(userDataProcessing.DELETE),
+            onPress: () =>
+              dispatch(
+                upsertUserDataProcessing.request(
+                  UserDataProcessingChoiceEnum.DELETE
+                )
+              )
           }}
         />
       </SafeAreaView>

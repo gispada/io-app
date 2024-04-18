@@ -31,12 +31,12 @@ const DeleteProfileConfirmScreen = ({ navigation }: Props) => (
       <FooterWithButtons
         type="TwoButtonsInlineThird"
         leftButton={{
-          title: I18n.t("newProfile.labels.cancel"),
+          title: I18n.t("global.buttons.cancel"),
           bordered: true,
           onPress: () => navigation.goBack()
         }}
         rightButton={{
-          title: I18n.t("newProfile.labels.confirm"),
+          title: I18n.t("global.buttons.confirm"),
           primary: true,
           onPress: () => navigation.replace(ROUTES.PROFILE_DELETE)
         }}
