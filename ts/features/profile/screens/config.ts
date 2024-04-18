@@ -1,5 +1,6 @@
 import { IOIcons } from "@pagopa/io-app-design-system";
 import { ProfileData } from "../types";
+import I18n from "../../../i18n";
 
 type ConfigItem = {
   id: string;
@@ -11,19 +12,19 @@ type ConfigItem = {
 export const config: Array<ConfigItem> = [
   {
     id: "name-surname",
-    title: "Nome e Cognome",
+    title: I18n.t("newProfile.labels.nameSurname"),
     value: ["name", "familyName"],
     iconName: "profile"
   },
   {
     id: "fiscal-code",
-    title: "Codice Fiscale",
+    title: I18n.t("newProfile.labels.fiscalCode"),
     value: "fiscalCode",
     iconName: "creditCard"
   },
   {
     id: "email",
-    title: "Indirizzo Email",
+    title: I18n.t("newProfile.labels.email"),
     value: "email",
     iconName: "email"
   }
