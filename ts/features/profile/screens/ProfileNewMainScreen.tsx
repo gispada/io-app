@@ -24,6 +24,11 @@ const ProfileNewMainScreen: React.FC<Props> = ({ navigation }) => {
   const profile = useSelector(selectProfileData);
   const userDataProcessing = useSelector(userDataProcessingSelector);
 
+  const profileDeletonPending = pot.map(
+    userDataProcessing.DELETE,
+    x => x?.choice === UserDataProcessingChoiceEnum.DELETE
+  );
+
   useEffect(() => {
     dispatch(profileData.request());
     dispatch(
@@ -45,6 +50,8 @@ const ProfileNewMainScreen: React.FC<Props> = ({ navigation }) => {
           label="Cancella profilo"
           isLoading={pot.isLoading(userDataProcessing.DELETE)}
           onSwitchValueChange={onSwitchToggle}
+          value={pot.getOrElse(profileDeletonPending, false)}
+          disabled={pot.getOrElse(profileDeletonPending, false)}
         />
       </List>
     </ScrollView>

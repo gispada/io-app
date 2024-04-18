@@ -1,7 +1,7 @@
 import React from "react";
 import { Content, List } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as pot from "@pagopa/ts-commons/lib/pot";
 import { VSpacer } from "@pagopa/io-app-design-system";
 import { H3 } from "../../../components/core/typography/H3";
@@ -12,9 +12,12 @@ import { IOStackNavigationRouteProps } from "../../../navigation/params/AppParam
 import { ProfileNewParamsList } from "../../../navigation/params/ProfileParamsList";
 import { selectProfileData } from "../../../features/profile/store/reducers";
 import { ProfileDataItems } from "../components/ProfileDataItems";
+import { upsertUserDataProcessing } from "../../../store/actions/userDataProcessing";
+import { UserDataProcessingChoiceEnum } from "../../../../definitions/backend/UserDataProcessingChoice";
 import { userDataProcessingSelector } from "../../../store/reducers/userDataProcessing";
 import { InfoBox } from "../../../components/box/InfoBox";
 import { Body } from "../../../components/core/typography/Body";
+import { ProfileDeleteSuccess } from "../components/ProfileDeleteSuccess";
 
 type Props = IOStackNavigationRouteProps<
   ProfileNewParamsList,
@@ -24,6 +27,7 @@ type Props = IOStackNavigationRouteProps<
 const DeleteProfileScreen = ({ navigation }: Props) => {
   const profile = useSelector(selectProfileData);
   const userDataProcessing = useSelector(userDataProcessingSelector);
+  const dispatch = useDispatch();
 
   const renderErrorIfAny = () => {
     if (pot.isError(userDataProcessing.DELETE)) {
@@ -38,6 +42,13 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
     }
     return null;
   };
+
+  if (
+    pot.isSome(userDataProcessing.DELETE) &&
+    userDataProcessing.DELETE.value?.choice
+  ) {
+    return <ProfileDeleteSuccess onDismiss={() => navigation.goBack()} />;
+  }
 
   return (
     <BaseScreenComponent goBack headerTitle="Cancella Profilo">
@@ -62,7 +73,13 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
           rightButton={{
             title: "Conferma",
             primary: true,
-            isLoading: pot.isLoading(userDataProcessing.DELETE)
+            isLoading: pot.isLoading(userDataProcessing.DELETE),
+            onPress: () =>
+              dispatch(
+                upsertUserDataProcessing.request(
+                  UserDataProcessingChoiceEnum.DELETE
+                )
+              )
           }}
         />
       </SafeAreaView>
