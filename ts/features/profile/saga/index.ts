@@ -7,7 +7,7 @@ import { SessionToken } from "../../../types/SessionToken";
 import { profileData } from "../store/actions";
 import { getNetworkError } from "../../../utils/errors";
 
-function* handleProfileData(
+export function* handleProfileData(
   getProfile: BackendClient["getProfile"],
   action: ActionType<typeof profileData.request>
 ) {
