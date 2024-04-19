@@ -45,6 +45,7 @@ export default reducer;
 
 const selectProfileState = (state: GlobalState) => state.profileNew;
 
-export const selectProfileData = createSelector(selectProfileState, x =>
-  pot.map(x.profileData, identity)
+export const selectProfileData = createSelector(
+  selectProfileState,
+  x => x.profileData
 );
