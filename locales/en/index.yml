@@ -3603,3 +3603,4 @@ newProfile:
     nameSurname: Name and Surname
     fiscalCode: Fiscal Code
     email: Email
+    delete: Delete profile
