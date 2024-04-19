@@ -3603,3 +3603,4 @@ newProfile:
     nameSurname: Nome e Cognome
     fiscalCode: Codice Fiscale
     email: Indirizzo Email
+    delete: Cancella profilo
