@@ -1,6 +1,5 @@
 import * as pot from "@pagopa/ts-commons/lib/pot";
 import { getType } from "typesafe-actions";
-import { identity } from "fp-ts/lib/function";
 import { createSelector } from "reselect";
 import { NetworkError } from "../../../../utils/errors";
 import { profileData } from "../actions";
