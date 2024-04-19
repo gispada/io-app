@@ -29,6 +29,7 @@ import { DateISO8601Transform } from "../transforms/dateISO8601Tranform";
 import { whatsNewInitialState } from "../../features/whatsnew/store/reducers";
 import { fastLoginOptInInitialState } from "../../features/fastLogin/store/reducers/optInReducer";
 import { isDevEnv } from "../../utils/environment";
+import profileNewReducer from "../../features/profile/store/reducers";
 import appStateReducer from "./appState";
 import assistanceToolsReducer from "./assistanceTools";
 import authenticationReducer, {
@@ -132,6 +133,7 @@ export const appReducer: Reducer<GlobalState, Action> = combineReducers<
   bonus: bonusReducer,
   assistanceTools: assistanceToolsReducer,
   startup: startupReducer,
+  profileNew: profileNewReducer,
   //
   // persisted state
   //

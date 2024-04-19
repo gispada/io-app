@@ -3596,3 +3596,10 @@ permissionRequest:
         2: Seleziona “IO”
         3: Seleziona “Foto” e consenti l’accesso
     cta: Apri Impostazioni
+newProfile:
+  errors:
+    fetch: Impossibile scaricare il tuo profilo :(
+  labels:
+    nameSurname: Nome e Cognome
+    fiscalCode: Codice Fiscale
+    email: Indirizzo Email

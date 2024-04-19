@@ -55,6 +55,7 @@ import {
   watchZendeskGetSessionSaga,
   watchZendeskSupportSaga
 } from "../features/zendesk/saga";
+import { watchProfileSaga } from "../features/profile/saga";
 import I18n from "../i18n";
 import { mixpanelTrack } from "../mixpanel";
 import NavigationService from "../navigation/NavigationService";
@@ -373,6 +374,8 @@ export function* initializeApplicationSaga(
     loadProfile,
     backendClient.getProfile
   );
+
+  yield* fork(watchProfileSaga, backendClient, sessionToken);
 
   if (O.isNone(maybeUserProfile)) {
     // Start again if we can't load the profile but wait a while
