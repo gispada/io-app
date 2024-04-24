@@ -1,36 +1,45 @@
 import React from "react";
 import { View } from "react-native";
-import { ContentWrapper } from "@pagopa/io-app-design-system";
+import {
+  ContentWrapper,
+  IOStyles,
+  FooterWithButtons,
+  Alert
+} from "@pagopa/io-app-design-system";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BaseScreenComponent from "../../../components/screens/BaseScreenComponent";
-import FooterWithButtons from "../../../components/ui/FooterWithButtons";
-import { InfoBox } from "../../../components/box/InfoBox";
-import { H3 } from "../../../components/core/typography/H3";
-import { IOStyles } from "../../../components/core/variables/IOStyles";
+import { useHeaderSecondLevel } from "../../../hooks/useHeaderSecondLevel";
 import I18n from "../../../i18n";
 
 type Props = {
-  onDismiss?: () => void;
+  onDismiss: () => void;
 };
 
-export const ProfileDeleteSuccess = ({ onDismiss }: Props) => (
-  <BaseScreenComponent goBack headerTitle="Cancella Profilo">
+export const ProfileDeleteSuccess = ({ onDismiss }: Props) => {
+  useHeaderSecondLevel({
+    title: I18n.t("newProfile.labels.delete")
+  });
+
+  return (
     <SafeAreaView style={IOStyles.flex}>
       <View style={IOStyles.flex}>
         <ContentWrapper>
-          <InfoBox iconName="success" iconColor="green">
-            <H3>{I18n.t("newProfile.copy.deleteSuccess")}</H3>
-          </InfoBox>
+          <Alert
+            variant="success"
+            content={I18n.t("newProfile.copy.deleteSuccess")}
+          />
         </ContentWrapper>
       </View>
 
       <FooterWithButtons
         type="SingleButton"
-        leftButton={{
-          title: I18n.t("global.buttons.back"),
-          onPress: onDismiss
+        primary={{
+          type: "Solid",
+          buttonProps: {
+            label: I18n.t("global.buttons.back"),
+            onPress: onDismiss
+          }
         }}
       />
     </SafeAreaView>
-  </BaseScreenComponent>
-);
+  );
+};

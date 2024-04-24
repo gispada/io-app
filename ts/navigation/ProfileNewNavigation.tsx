@@ -8,11 +8,7 @@ import { ProfileNewParamsList } from "./params/ProfileParamsList";
 const Stack = createStackNavigator<ProfileNewParamsList>();
 
 const ProfileNewNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerShown: false
-    }}
-  >
+  <Stack.Navigator>
     <Stack.Screen
       name={ROUTES.PROFILE_DELETE_CONFIRM}
       component={DeleteProfileConfirmScreen}
