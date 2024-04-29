@@ -3599,8 +3599,13 @@ permissionRequest:
 newProfile:
   errors:
     fetch: We could not fetch your profile :(
+    delete: An error occurred while deleting your profile
   labels:
     nameSurname: Name and Surname
     fiscalCode: Fiscal Code
     email: Email
     delete: Delete profile
+  copy:
+    confirmDelete: Do you want to delete your profile?
+    confirmDeleteLast: Are you sure you want to delete the following profile?
+    deleteSuccess: Profile deletion started

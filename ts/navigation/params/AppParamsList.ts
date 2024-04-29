@@ -67,7 +67,7 @@ import { AuthenticationParamsList } from "./AuthenticationParamsList";
 import { CheckEmailParamsList } from "./CheckEmailParamsList";
 import { MainTabParamsList } from "./MainTabParamsList";
 import { OnboardingParamsList } from "./OnboardingParamsList";
-import { ProfileParamsList } from "./ProfileParamsList";
+import { ProfileNewParamsList, ProfileParamsList } from "./ProfileParamsList";
 import { WalletParamsList } from "./WalletParamsList";
 
 export type AppParamsList = {
@@ -83,6 +83,7 @@ export type AppParamsList = {
   [ROUTES.WALLET_NAVIGATOR]: NavigatorScreenParams<WalletParamsList>;
   [SERVICES_ROUTES.SERVICES_NAVIGATOR]: NavigatorScreenParams<ServicesParamsList>;
   [ROUTES.PROFILE_NAVIGATOR]: NavigatorScreenParams<ProfileParamsList>;
+  [ROUTES.PROFILE_NEW_NAVIGATOR]: NavigatorScreenParams<ProfileNewParamsList>;
 
   [ROUTES.BARCODE_SCAN]: undefined;
 
