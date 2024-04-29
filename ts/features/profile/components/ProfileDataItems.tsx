@@ -1,7 +1,6 @@
 import React from "react";
-import { IOIcons } from "@pagopa/io-app-design-system";
+import { IOIcons, ListItemInfo } from "@pagopa/io-app-design-system";
 import I18n from "../../../i18n";
-import ListItemComponent from "../../../components/screens/ListItemComponent";
 import { ProfileData } from "../types";
 
 type Props = {
@@ -39,13 +38,13 @@ const config: Array<ConfigItem> = [
 export const ProfileDataItems = ({ data }: Props) => (
   <>
     {config.map(({ id, title, value, iconName }) => (
-      <ListItemComponent
+      <ListItemInfo
         key={id}
-        title={title}
-        subTitle={
+        label={title}
+        value={
           Array.isArray(value) ? value.map(v => data[v]).join(" ") : data[value]
         }
-        iconName={iconName}
+        icon={iconName}
       />
     ))}
   </>
