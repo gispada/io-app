@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
 import { List } from "native-base";
-import { SafeAreaView } from "react-native-safe-area-context";
 import * as pot from "@pagopa/ts-commons/lib/pot";
 import {
   ContentWrapper,
@@ -11,8 +10,7 @@ import {
   IOStyles,
   Alert
 } from "@pagopa/io-app-design-system";
-import { IOStackNavigationRouteProps } from "../../../navigation/params/AppParamsList";
-import { ProfileNewParamsList } from "../../../navigation/params/ProfileParamsList";
+import { useIONavigation } from "../../../navigation/params/AppParamsList";
 import { selectProfileData } from "../../../features/profile/store/reducers";
 import { ProfileDataItems } from "../components/ProfileDataItems";
 import { upsertUserDataProcessing } from "../../../store/actions/userDataProcessing";
@@ -23,12 +21,8 @@ import { useIOSelector, useIODispatch } from "../../../store/hooks";
 import I18n from "../../../i18n";
 import { ProfileDeleteSuccess } from "../components/ProfileDeleteSuccess";
 
-type Props = IOStackNavigationRouteProps<
-  ProfileNewParamsList,
-  "PROFILE_DELETE"
->;
-
-const DeleteProfileScreen = ({ navigation }: Props) => {
+const DeleteProfileScreen = () => {
+  const navigation = useIONavigation();
   const profile = useIOSelector(selectProfileData);
   const userDataProcessing = useIOSelector(userDataProcessingSelector);
   const dispatch = useIODispatch();
@@ -57,7 +51,7 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
   }
 
   return (
-    <SafeAreaView style={IOStyles.flex}>
+    <>
       <View style={IOStyles.flex}>
         <ContentWrapper>
           <H3>{I18n.t("newProfile.copy.confirmDeleteLast")}</H3>
@@ -95,7 +89,7 @@ const DeleteProfileScreen = ({ navigation }: Props) => {
           }
         }}
       />
-    </SafeAreaView>
+    </>
   );
 };
 

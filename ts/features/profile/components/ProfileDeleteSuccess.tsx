@@ -6,7 +6,6 @@ import {
   FooterWithButtons,
   Alert
 } from "@pagopa/io-app-design-system";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useHeaderSecondLevel } from "../../../hooks/useHeaderSecondLevel";
 import I18n from "../../../i18n";
 
@@ -20,7 +19,7 @@ export const ProfileDeleteSuccess = ({ onDismiss }: Props) => {
   });
 
   return (
-    <SafeAreaView style={IOStyles.flex}>
+    <>
       <View style={IOStyles.flex}>
         <ContentWrapper>
           <Alert
@@ -40,6 +39,6 @@ export const ProfileDeleteSuccess = ({ onDismiss }: Props) => {
           }
         }}
       />
-    </SafeAreaView>
+    </>
   );
 };

@@ -6,25 +6,20 @@ import {
   Alert,
   IOStyles
 } from "@pagopa/io-app-design-system";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { IOStackNavigationRouteProps } from "../../../navigation/params/AppParamsList";
-import { ProfileNewParamsList } from "../../../navigation/params/ProfileParamsList";
+import { useIONavigation } from "../../../navigation/params/AppParamsList";
 import { useHeaderSecondLevel } from "../../../hooks/useHeaderSecondLevel";
 import ROUTES from "../../../navigation/routes";
 import I18n from "../../../i18n";
 
-type Props = IOStackNavigationRouteProps<
-  ProfileNewParamsList,
-  "PROFILE_DELETE_CONFIRM"
->;
+const DeleteProfileConfirmScreen = () => {
+  const navigation = useIONavigation();
 
-const DeleteProfileConfirmScreen = ({ navigation }: Props) => {
   useHeaderSecondLevel({
     title: I18n.t("newProfile.labels.delete")
   });
 
   return (
-    <SafeAreaView style={IOStyles.flex}>
+    <>
       <View style={IOStyles.flex}>
         <ContentWrapper>
           <Alert
@@ -47,11 +42,14 @@ const DeleteProfileConfirmScreen = ({ navigation }: Props) => {
           type: "Solid",
           buttonProps: {
             label: I18n.t("global.buttons.confirm"),
-            onPress: () => navigation.replace(ROUTES.PROFILE_DELETE)
+            onPress: () =>
+              navigation.replace(ROUTES.PROFILE_NEW_NAVIGATOR, {
+                screen: ROUTES.PROFILE_DELETE
+              })
           }
         }}
       />
-    </SafeAreaView>
+    </>
   );
 };
 
